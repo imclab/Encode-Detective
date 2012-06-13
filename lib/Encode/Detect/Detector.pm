@@ -36,13 +36,11 @@ package Encode::Detect::Detector;
 #
 # ***** END LICENSE BLOCK *****
 
-use strict;
-use warnings;
-
-our $VERSION = "1.01";
-our @EXPORT=qw(detect);
-
 require XSLoader;
+our $VERSION = "1.01";
+require Exporter;
+@ISA = qw(Exporter);
+our @EXPORT=qw(detect);
 XSLoader::load('Encode::Detect', $VERSION);
 
 1;
