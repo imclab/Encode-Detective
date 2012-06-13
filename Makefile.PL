@@ -14,7 +14,18 @@ WriteMakefile (
     ABSTRACT_FROM => $pm,
     LICENSE => 'mozilla',
     XSOPT => '-C++',
+    XS => {
+        'lib/Encode/Detect/Detector.xs' => 1,
+    },
     AUTHOR => 'buggles',
     OBJECT => $objects,
     INC => "-I include",
 );
+package MY;
+sub c_o {
+    my $inherited = shift->SUPER::c_o(@_);
+    $inherited =~ s/(\$\*\.cpp)/-o \$*.o $1/;
+#    print "$inherited\n";
+    return $inherited;
+}
+

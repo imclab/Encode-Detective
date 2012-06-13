@@ -61,7 +61,7 @@ class Detector: public nsUniversalDetector {
 };
 
 
-MODULE = Encode::Detect::Detector		PACKAGE = Encode::Detect
+MODULE = Encode::Detect::Detector		PACKAGE = Encode::Detect::Detector
 PROTOTYPES: ENABLE
 
 
