@@ -15,7 +15,7 @@ WriteMakefile (
     LICENSE => 'mozilla',
     XSOPT => '-C++',
     XS => {
-        'lib/Encode/Detect/Detector.xs' => 1,
+        'lib/Encode/Detect/Detector.xs' => 'lib/Encode/Detect/Detector.xs',
     },
     AUTHOR => 'buggles',
     OBJECT => $objects,
