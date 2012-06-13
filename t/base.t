@@ -3,6 +3,8 @@ use warnings;
 use Test::More qw(no_plan);
 
 BEGIN { use_ok('Encode::Detect::Detector') }
+use Encode::Detect::Detector 'detect';
+
 
 our $d;
 

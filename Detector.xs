@@ -61,9 +61,9 @@ class Detector: public nsUniversalDetector {
 };
 
 
-MODULE = Encode::Detect::Detector		PACKAGE = Encode::Detect::Detector
-PROTOTYPES: ENABLE
+MODULE = Encode::Detect		PACKAGE = Encode::Detect::Detector
 
+PROTOTYPES: ENABLE
 
 Detector *
 Detector::new()
@@ -96,7 +96,6 @@ Detector::getresult()
 	RETVAL = THIS->getresult();
     OUTPUT:
 	RETVAL
-
 
 const char *
 detect(buf)

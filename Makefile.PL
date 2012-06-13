@@ -8,18 +8,19 @@ my @cxx_files = <src/*.cpp>;
 my @o_files = map {s/\.cpp/.o/;$_} @cxx_files;
 my $objects = join ' ', @o_files;
 
+my $CC='g++';
+
 WriteMakefile (
     NAME => 'Encode::Detect',
     VERSION_FROM => $pm,
     ABSTRACT_FROM => $pm,
     LICENSE => 'mozilla',
     XSOPT => '-C++',
-    XS => {
-        'lib/Encode/Detect/Detector.xs' => 'lib/Encode/Detect/Detector.xs',
-    },
     AUTHOR => 'buggles',
-    OBJECT => $objects,
-    INC => "-I include",
+    OBJECT => "Detector.o $objects",
+    INC => "-I include -I src",
+    CC => $CC,
+    LIBS => ['-lstdc++'],
 );
 package MY;
 sub c_o {

@@ -40,12 +40,10 @@ use strict;
 use warnings;
 
 our $VERSION = "1.01";
-
-require DynaLoader;
-our @ISA=qw(DynaLoader Exporter);
-Encode::Detect::Detector->bootstrap($VERSION);
 our @EXPORT=qw(detect);
 
+require XSLoader;
+XSLoader::load('Encode::Detect', $VERSION);
 
 1;
 
