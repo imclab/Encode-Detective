@@ -21,12 +21,18 @@ WriteMakefile (
     INC => "-I include -I src",
     CC => $CC,
     LIBS => ['-lstdc++'],
+    clean => {
+        FILES => $objects
+    },
 );
+
+# Override the stupid default method of ExtUtils::MakeMaker.
+
 package MY;
+
 sub c_o {
     my $inherited = shift->SUPER::c_o(@_);
     $inherited =~ s/(\$\*\.cpp)/-o \$*.o $1/;
-#    print "$inherited\n";
     return $inherited;
 }
 
