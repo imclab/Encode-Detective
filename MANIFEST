@@ -1,7 +1,7 @@
-Build.PL
+Makefile.PL
 Changes
-Detect.pm
-Detector.pm
+Encode/Detect.pm
+Encode/Detect/Detector.pm
 Detector.xs
 LICENSE
 MANIFEST
