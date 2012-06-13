@@ -39,11 +39,6 @@ extern "C" {
 #include "EXTERN.h"
 #include "perl.h"
 
-// work around perlbug #39634
-#if __GNUC__ == 3 && __GNUC_MINOR__ <= 3
-#undef HASATTRIBUTE_UNUSED
-#endif
-
 #include "XSUB.h"
 }
 
