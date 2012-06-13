@@ -1,11 +1,12 @@
 Makefile.PL
 Changes
-Encode/Detect.pm
-Encode/Detect/Detector.pm
+lib/Encode/Detect.pm
+lib/Encode/Detect/Detector.pm
 Detector.xs
 LICENSE
 MANIFEST
 META.yml
+META.json
 Makefile.PL
 include/nscore.h
 include/prmem.h
