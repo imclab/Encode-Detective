@@ -5,6 +5,7 @@ my $build = Module::Build->new
      license => 'mozilla',
      requires => { 'Module::Build' => 0,
                    'ExtUtils::CBuilder' => 0,
+                   'perl' => "5.008",
                },
      create_makefile_pl => 'passthrough',
      c_source => 'src',
