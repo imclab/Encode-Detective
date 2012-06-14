@@ -15,7 +15,6 @@ WriteMakefile (
     VERSION_FROM => $pm,
     ABSTRACT_FROM => $pm,
     LICENSE => 'mozilla',
-    XSOPT => '-C++',
     AUTHOR => 'buggles',
     OBJECT => "Detector.o $objects",
     INC => "-I include -I src",

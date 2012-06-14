@@ -59,7 +59,7 @@ Encode::Detect::Detector - Detects the encoding of data
   my $d = new Encode::Detect::Detector;
   $d->handle($octets);
   $d->handle($more_octets);
-  $d->end;
+  $d->eof;
   my $charset = $d->getresult;
 
 =head1 DESCRIPTION
