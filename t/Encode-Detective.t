@@ -1,6 +1,6 @@
 use strict;
 use warnings;
-use Test::More tests => 8;
+use Test::More tests => 9;
 use FindBin;
 
 use Encode::Detective 'detect';
@@ -14,6 +14,10 @@ read_file ('fortune.6', 'EUC-KR');
 read_file ('tocru.htm', 'windows-1251');
 read_file ('hebrew-8088', 'windows-1255');
 read_file ('greek.html', 'ISO-8859-7');
+TODO: {
+    local $TODO = 'does not detect this one';
+    read_file ('std620.htm', 'TIS-620');
+}
 exit;
 
 sub read_file

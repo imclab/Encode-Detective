@@ -118,6 +118,14 @@ Shift-JIS.
 
 =back
 
+=head1 TODO
+
+The module needs more tests. Please send example files
+
+=head1 BUGS
+
+TIS-620 does not seem to be detected.
+
 =head1 HISTORY
 
 This module is based on code of Firefox. When this module was created,
