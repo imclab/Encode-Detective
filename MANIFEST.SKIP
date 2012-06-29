@@ -1,0 +1,11 @@
+.*\.o
+.*\.~\d+~
+blib/.*
+\.git
+\.gitignore
+Detective\.c
+Detective\.bs
+Makefile
+Makefile\.old
+MANIFEST\.bak
+MYMETA\..*

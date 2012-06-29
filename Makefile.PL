@@ -5,8 +5,8 @@ use File::Copy;
 
 my $pm = 'lib/Encode/Detective.pm';
 my @cxx_files = (<src/*.cpp>, "run-detector.cpp");
-my @o_files = map {s/\.cpp/.o/;$_} @cxx_files;
-my $objects = join ' ', @o_files;
+my @o_files = map {s/\.cpp/.o/; $_} @cxx_files;
+my $repo = 'https://github.com/benkasminbullock/Encode-Detective';
 
 WriteMakefile (
     NAME => 'Encode::Detective',
@@ -14,13 +14,19 @@ WriteMakefile (
     ABSTRACT_FROM => $pm,
     LICENSE => 'mozilla',
     AUTHOR => 'buggles',
-    OBJECT => "Detective.o $objects",
+    OBJECT => "Detective.o @o_files",
     INC => "-I include -I src",
     LIBS => ['-lstdc++'],
     clean => {
         FILES => $objects
     },
     MIN_PERL_VERSION => '5.008',
+    META_MERGE => {
+        resources => {
+            repository => $repo,
+            bugtracker => "$repo/issues",
+        },
+    },
 );
 
 # Override the stupid default method of ExtUtils::MakeMaker.

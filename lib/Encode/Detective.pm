@@ -45,6 +45,7 @@ use warnings;
 use XSLoader;
 our $VERSION = 0.01;
 XSLoader::load 'Encode::Detective', $VERSION;
+
 1;
 
 __END__
@@ -62,16 +63,33 @@ Encode::Detective - detect a data encoding
 
 =head1 DESCRIPTION
 
-This determines the charset of the input data and then decodes it
-using the encoder of the detected charset.
+This module guesses the character set of input data. It is similar to
+L<Encode::Guess>, but does not require a list of expected encodings.
 
-It is similar to L<Encode::Guess>, but does not require the
-configuration of a set of expected encodings.
+=head1 FUNCTIONS
 
-=head1 AUTHOR
+=head2 detect
 
-Original module: John Gardiner Myers <jgmyers@proofpoint.com>
-This fork: Ben Bullock <bkb@cpan.org>
+    my $encoding = detect ($data);
+
+Given a set of bytes, C<$data>, this looks at the bytes, and guesses
+what encoding they are encoded in using probabilities.
+
+=head1 HISTORY
+
+This module is based on code of Firefox. When this module was created,
+the C++ code for character set detection was available as a standalone
+library. Now the code cannot be used as a standalone library, so this
+has become a fork of the original Mozilla code.
+
+Encode::Detective is a fork of Encode::Detect. It removes almost all
+of the interface of Encode::Detect except the single function
+L</detect>.
+
+=head1 AUTHORS
+
+Encode::Detective is based on L<Encode::Detect> by John Gardiner Myers
+<jgmyers@proofpoint.com>. It was forked by Ben Bullock <bkb@cpan.org>.
 
 =head1 LICENCE
 
