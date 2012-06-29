@@ -5,7 +5,8 @@ blib/.*
 \.gitignore
 Detective\.c
 Detective\.bs
-Makefile
+Makefile$
 Makefile\.old
 MANIFEST\.bak
 MYMETA\..*
+pm_to_blib

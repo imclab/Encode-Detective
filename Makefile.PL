@@ -13,13 +13,10 @@ WriteMakefile (
     VERSION_FROM => $pm,
     ABSTRACT_FROM => $pm,
     LICENSE => 'mozilla',
-    AUTHOR => 'buggles',
+    AUTHOR => 'Ben Bullock <bkb@cpan.org>',
     OBJECT => "Detective.o @o_files",
     INC => "-I include -I src",
     LIBS => ['-lstdc++'],
-    clean => {
-        FILES => $objects
-    },
     MIN_PERL_VERSION => '5.008',
     META_MERGE => {
         resources => {

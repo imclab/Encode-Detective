@@ -39,6 +39,7 @@
 
 #include "XSUB.h"
 
+#include "run-detector.h"
 
 MODULE = Encode::Detective		PACKAGE = Encode::Detective
 

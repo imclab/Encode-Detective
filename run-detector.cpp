@@ -1,7 +1,8 @@
 #include "nscore.h"
 #include "nsUniversalDetector.h"
-
+extern "C" {
 #include "run-detector.h"
+}
 
 class Detector: public nsUniversalDetector {
     public:
