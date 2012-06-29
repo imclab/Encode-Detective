@@ -3,22 +3,19 @@ use strict;
 use ExtUtils::MakeMaker 6.48;
 use File::Copy;
 
-my $pm = 'lib/Encode/Detect.pm';
-my @cxx_files = <src/*.cpp>;
+my $pm = 'lib/Encode/Detective.pm';
+my @cxx_files = (<src/*.cpp>, "run-detector.cpp");
 my @o_files = map {s/\.cpp/.o/;$_} @cxx_files;
 my $objects = join ' ', @o_files;
 
-my $CC='g++';
-
 WriteMakefile (
-    NAME => 'Encode::Detect',
+    NAME => 'Encode::Detective',
     VERSION_FROM => $pm,
     ABSTRACT_FROM => $pm,
     LICENSE => 'mozilla',
     AUTHOR => 'buggles',
-    OBJECT => "Detector.o $objects",
+    OBJECT => "Detective.o $objects",
     INC => "-I include -I src",
-    CC => $CC,
     LIBS => ['-lstdc++'],
     clean => {
         FILES => $objects

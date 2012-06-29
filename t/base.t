@@ -1,23 +1,11 @@
 use strict;
 use warnings;
-use Test::More tests => 7;
+use Test::More tests => 2;
 
-BEGIN { use_ok('Encode::Detect::Detector') }
-use Encode::Detect::Detector 'detect';
+use Encode::Detective 'detect';
 
-our $d;
+is (detect("\x82\xb7\x82\xb2\x82\xa2\x82\xcc\x82\xdd\x82\xc2"), "Shift_JIS",
+   "Test shift JIS");
 
-ok($d = new Encode::Detect::Detector, 'new');
-
-can_ok('Encode::Detect::Detector', 'detect');
-
-can_ok($d, qw(handle getresult DESTROY));
-
-is($d->handle("\x82\xb7\x82\xb2\x82\xa2\x82\xcc\x82\xdd\x82\xc2"), 0, 'handle');
-
-$d->eof;
-
-is($d->getresult, "Shift_JIS", 'getresult');
-
-is(detect("j\xc2\x92aimerais"), "UTF-8", 'detect');
+is (detect("j\xc2\x92aimerais"), "UTF-8", 'detect');
 

@@ -34,76 +34,22 @@
 // 
 //  ***** END LICENSE BLOCK *****
 
-extern "C" {
-#define PERL_NO_GET_CONTEXT     /* we want efficiency */
 #include "EXTERN.h"
 #include "perl.h"
 
 #include "XSUB.h"
-}
-
-#include "nscore.h"
-#include "nsUniversalDetector.h"
-
-class Detector: public nsUniversalDetector {
-    public:
-	Detector() {};
-	virtual ~Detector() {}
-	const char *getresult() { return mDetectedCharset; }
-	virtual void Reset() { this->nsUniversalDetector::Reset(); }
-    protected:
-	virtual void Report(const char* aCharset) { mDetectedCharset = aCharset; }
-};
 
 
-MODULE = Encode::Detect		PACKAGE = Encode::Detect::Detector
+MODULE = Encode::Detective		PACKAGE = Encode::Detective
 
 PROTOTYPES: ENABLE
 
-Detector *
-Detector::new()
-
-void
-Detector::DESTROY()
-
-int
-Detector::handle(SV *buf)
+const char *
+detect (SV *buf)
     CODE:
 	STRLEN len;
 	char *ptr = SvPV(buf, len);
-	RETVAL = THIS->HandleData(ptr, len);
+	RETVAL = run_detector (ptr, len);
     OUTPUT:
 	RETVAL
-
-void
-Detector::eof()
-    CODE:
-	THIS->DataEnd();
-
-void
-Detector::reset()
-    CODE:
-	THIS->Reset();
-
-const char *
-Detector::getresult()
-    CODE:
-	RETVAL = THIS->getresult();
-    OUTPUT:
-	RETVAL
-
-const char *
-detect(buf)
-	SV *buf
-    CODE:
-	STRLEN len;
-	char *ptr = SvPV(buf, len);
-
-	Detector *det = new Detector;
-	det->HandleData(ptr, len);
-	det->DataEnd();
-	RETVAL = det->getresult();
-	delete det;
-    OUTPUT:
-        RETVAL
 
