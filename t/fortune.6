@@ -1,0 +1,200 @@
+.\" Copyright (c) 1985, 1991, 1993
+.\"	The Regents of the University of California.   All rights reserved.
+.\"
+.\" This code is derived from software contributed to Berkeley by
+.\" Ken Arnold.
+.\"
+.\" Redistribution and use in source and binary forms, with or without
+.\" modification, are permitted provided that the following conditions
+.\" are met:
+.\" 1.  Redistributions of source code must retain the above copyright
+.\"    notice, this list of conditions and the following disclaimer.
+.\" 2.  Redistributions in binary form must reproduce the above copyright
+.\"    notice, this list of conditions and the following disclaimer in the
+.\"    documentation and/or other materials provided with the distribution.
+.\" 3.  All advertising materials mentioning features or use of this software
+.\"    must display the following acknowledgement:
+.\"	This product includes software developed by the University of
+.\"	California, Berkeley and its contributors.
+.\" 4.  Neither the name of the University nor the names of its contributors
+.\"    may be used to endorse or promote products derived from this software
+.\"    without specific prior written permission.
+.\"
+.\" THIS SOFTWARE IS PROVIDED BY THE REGENTS AND CONTRIBUTORS ``AS IS'' AND
+.\" ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+.\" IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+.\" ARE DISCLAIMED.   IN NO EVENT SHALL THE REGENTS OR CONTRIBUTORS BE LIABLE
+.\" FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+.\" DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+.\" OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+.\" HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+.\" LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+.\" OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+.\" SUCH DAMAGE.
+.\"
+.\"	@(#) fortune. 6	8.3 (Berkeley) 4/19/94
+.\" %FreeBSD: src/games/fortune/fortune/fortune. 6, v 1.9. 2.6 2001/12/14 14:26:32 ru Exp %
+.\" $FreeBSD: doc/ja_JP.eucJP/man/man6/fortune. 6, v 1.14 2001/12/23 05:36:45 horikawa Exp $
+.\"
+.\" 이하는 Linux JM 의 크레디트
+.\" Japanese Version Copyright (c) 1997,1998 MAEHARA Kohichi
+.\" Japanese Version Copyright (c) 1997,1998 HANAYAKA Sinya
+.\"         all rights reserved.
+.\" Translated Tue Feb 10 00:00:00 JST 1998
+.\"         by HANATAKA Sinya <hanataka@abyss.rim.or.jp>
+.\"         by MAEHARA Kohichi <maeharak@kw.netlaputa.ne.jp>
+.\"
+.\"
+.Dd April 19, 1994
+.Dt FORTUNE 6
+.Os
+.Sh 명칭
+.Nm fortune
+.Nd "재미있게 도움이 되는 격언을 무작위로 표시한다"
+.Sh 서식
+.Op Fl aDefilosw
+.Op Fl m Ar pattern
+.Oo
+.Op Ar \&N%
+.Ar file/dir/all
+.Oc
+.Sh 해설
+.Nm
+(을)를 인수없이 실행하면(자), 무작위로 선택한 격언을 하나 표시합니다.
+격언은 몇개의 종류로 분류되고 있어, 각각의 분류는 게다가
+귀에 아픈 것과 그렇지 않은 것과로 나눌 수 있고 있습니다.
+옵션을 이하에 나타냅니다:
+.Bl -tag -width flag
+.It Fl a
+귀에 아픈 것도 그렇지 않은 것도, 격언을 모두 포함했다
+리스트로부터 선택합니다 (귀에 아픈 것에 대한 자세한 것은
+.Fl o
+옵션을 참조해 주세요).
+.It Fl D
+한층 더 디버그 출력을 유효하게 합니다.
+본옵션을 여러 차례 지정하면(자), 출력이 더욱 장황하게 됩니다.
+-DDEBUG 첨부로 컴파일 되고 있는 경우만, 이용 가능합니다.
+.It Fl e
+모든 fortune 의 파일이 동일 사이즈인 것을 가정합니다
+(복수 파일의 취급에 대한 아래와 같은 해설을 참조해 주세요).
+.It Fl f
+검색되는 파일의 일람을 표시해, 격언은 표시하지 않습니다.
+.It Fl l
+약간 긴 격언에 한정합니다.
+.It Fl m
+정규 표현
+.Ar pettern
+에 합치하는 격언을 표시합니다.
+정규 표현의 패턴의 기술 방법에 대해서는
+.Xr regex 3
+(을)를 참조해 주세요.
+.It Fl o
+귀에 아픈 격언에 한정해,
+그 중에서 선택해 출력합니다.
+.Bf -symbolic
+꼭, 꼭, 꼭 ,
+귀에 아픈 격언을 기뻐해
+받아들여지는 기분이라고 마음속으로부터 확신하고 있을 때 한정해,
+귀에 아픈 것 같은 격언을 지정해 주세요 (그리고,
+만약 받아들여지지 않는 기분일 때라면, 나온 문언에 대해 우리에게
+불평하는 것을 하지 않고, 입다물어
+.Fl o
+옵션의 사용을 멈출 것이군요).
+.Ef
+.Bd -ragged -offset indent
+\&...인류애에 대해 기본적 또한 지배적인 철학을 명심하는 듯
+(으)로 하자, 이것은 이하의 말에 간결하게 정리하고 있다:
+진심으로의 웃음은 건강을 위해서 좋을 -- 필요와 전인류를
+희생했다고 해도.
+.Bd -ragged -offset indent-two -compact
+--H.  Allen Smith, "Rude Jokes"
+.Ed
+.Ed
+.It Fl s
+약간 짧은 듯한 격언에 한정합니다.
+.It Fl i
+.Fl m
+옵션으로 지정된 (정규 표현의) 패턴에 대해,
+대문자 소문자의 구별을 무시합니다.
+.It Fl w
+종료전에, 메세지의 캐릭터수에 응한 길이로부터 산출되는 시간만 정지합니다.
+로그아웃 순서에 짜넣었을 경우,
+스크린이 클리어 되기 전에
+메세지를 읽어내는 시간을 확보하는데 도움이 됩니다.
+.El
+.Pp
+다른 격언집의 사용을 지정할 수가 있습니다. 이 지정에서는,
+특정의 파일, 1 개(살) 이상의 파일을 포함한 디렉토리,
+혹은 표준 데이타베이스 모두를 사용한다고 한다
+.Em all
+그렇다고 하는 특수어의 어느쪽이든을 지정 가능합니다.
+이러한 전에는 퍼센티지를 붙이는 것이 가능합니다.
+퍼센티지는, 0 이상 100 이하의 숫자
+.Ar N
+에
+.Ar %
+(을)를 계속한 것입니다.
+퍼센티지를 지정했을 경우, 어느 격언이
+.Ar N
+퍼센트의 확률로 그 파일 혹은 디렉토리로부터 선택됩니다.
+퍼센트의 합계가 100 에 만두, 퍼센트 없음의 지정이 있는 경우,
+나머지의 퍼센트가, 퍼센트 없음의 파일과 디렉토리에 할당.
+이 경우, 퍼센트 없음의 것이 선택되는 확률은, 이러한 사이즈에 의존합니다.
+.Pp
+예로서 2 개의 데이타베이스
+.Em funny
+(와)과
+.Em not-funny
+(을)를 이용합니다. 이 때
+.Em funny
+하지만 2 배의 크기로 한다면,
+.Bd -literal -offset indent
+fortune funny not-funny
+.Ed
+.Pp
+(이)라고 지시하면(자) 3 회에 2 회의 비율로
+.Em funny
+(으)로부터 선택됩니다.
+명령을
+.Bd -literal -offset indent
+fortune 90% funny 10% not-funny
+.Ed
+.Pp
+(와)과 같이 지정하면(자) 90 % 를
+.Em funny
+(으)로부터 골라냅니다
+(이 경우 나머지가 10% 인 것이 분명해서
+.Dq 10% not-funny
+(은)는 불필요합니다).
+.Fl e
+옵션을 지정하면(자), 모든 파일로부터 균등하게 골라냅니다;
+즉
+.Bd -literal -offset indent
+fortune \-e funny not-funny
+.Ed
+.Pp
+(으)로 하는 것은
+.Bd -literal -offset indent
+fortune 50% funny 50% not-funny
+.Ed
+.Pp
+(와)과 지정하는 것과 동등합니다.
+.Sh 관련 파일
+.Bl -tag -width Pa -compact
+.It Pa /usr/games/fortune
+.Pp
+.It Pa /usr/share/games/fortune/*
+fortune 의 데이타베이스 (이름이
+.Dq -o
+그리고 끝나는 파일에는,
+.Bf -symbolic
+귀에 아프다
+.Ef
+격언이 포함됩니다)
+.El
+.Sh 관련 항목
+.Xr regcomp 3 ,
+.Xr regex 3 ,
+.Xr strfile 8
+.\" Amended by kuma, based on fortune. 6, v 1.2 1998/02/24 14:51:07 horikawa Stab
+.\"ZZZ: 3.0-RELEASE complianted by N.  Kumagai, 99-1-16

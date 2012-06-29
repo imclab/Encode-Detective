@@ -75,6 +75,49 @@ L<Encode::Guess>, but does not require a list of expected encodings.
 Given a set of bytes, C<$data>, this looks at the bytes, and guesses
 what encoding they are encoded in using probabilities.
 
+=head1 DETECTED ENCODINGS
+
+The following encodings are detected:
+
+=over
+
+=item UTF-8
+
+=item EUC-JP
+
+=item Big5
+
+=item Shift_JIS
+
+=item EUC-KR
+
+=item EUC-TW
+
+Taiwanese encoding.
+
+=item windows-1251
+
+Cyrillic encoding.
+
+=item windows-1255
+
+Hebrew encoding.
+
+=back
+
+Character sets not detected
+
+=over
+
+=item mac roman
+
+=item CP932
+
+An extension of Shift-JIS, more common in practice than actual
+Shift-JIS.
+
+=back
+
 =head1 HISTORY
 
 This module is based on code of Firefox. When this module was created,

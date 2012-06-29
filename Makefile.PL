@@ -24,6 +24,9 @@ WriteMakefile (
             bugtracker => "$repo/issues",
         },
     },
+    clean => {
+        FILES => "@o_files"
+    },
 );
 
 # Override the stupid default method of ExtUtils::MakeMaker.

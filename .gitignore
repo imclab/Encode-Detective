@@ -1,7 +1,4 @@
-# Outputs of perl Build.PL or ./Build
-Build
-_build
 # Other stuff
-Detect.bs
+Detective.bs
 Makefile
-Detector.c
+Detective.c
