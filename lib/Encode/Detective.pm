@@ -43,7 +43,7 @@ use strict;
 use warnings;
 
 use XSLoader;
-our $VERSION = 0.03;
+our $VERSION = 0.04;
 XSLoader::load 'Encode::Detective', $VERSION;
 
 1;
@@ -124,7 +124,13 @@ The module needs more tests. Please send example files
 
 =head1 BUGS
 
+=head2 TIS-620
+
 TIS-620 does not seem to be detected.
+
+=head2 Documentation of detection
+
+The documentation of detected encodings above is not complete.
 
 =head1 HISTORY
 
@@ -133,9 +139,25 @@ the C++ code for character set detection was available as a standalone
 library. Now the code cannot be used as a standalone library, so this
 has become a fork of the original Mozilla code.
 
-Encode::Detective is a fork of Encode::Detect. It removes almost all
-of the interface of Encode::Detect except the single function
-L</detect>.
+Encode::Detective is a fork of L<Encode::Detect>. It removes almost
+all of the interface of Encode::Detect except the single function
+L</detect>. This fork was released to CPAN to improve the compilation
+of the module on various systems.
+
+=head1 SEE ALSO
+
+=head2 edetect
+
+The L<edetect> standalone script can guess the encodings of files.
+
+=head2 Encode::Guess
+
+L<Encode::Guess> is a Perl module which does something similar to
+Encode::Detective.
+
+=head2 Encode::Detect
+
+The original version of this module.
 
 =head1 AUTHORS
 

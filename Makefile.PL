@@ -29,6 +29,9 @@ my %args = (
             bugtracker => "$repo/issues",
         },
     },
+    EXE_FILES => [
+        'script/edetect',
+    ],
     clean => {
         FILES => "@o_files"
     },
