@@ -152,7 +152,7 @@ The L<edetect> standalone script can guess the encodings of files.
 
 =head2 Online demonstration
 
-L<LeMoDa.net offers an online detection service|http://www.lemoda.net/encodings/guess-japanese/index.html>,
+L<LeMoDa.net offers an online detection service|http://www.lemoda.net/tools/encode-detective/>,
 which also checks the HTTP response header and the meta tag of the
 page.
 
