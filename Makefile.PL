@@ -40,7 +40,7 @@ my %args = (
 # http://www.cpantesters.org/cpan/report/a6e38de8-c240-11e1-8755-e63c2a028b78
 # This is taken from a module called "ExtUtils::CppGuess".
 
-if ($^0 eq 'netbsd') {
+if ($^O eq 'netbsd') {
     $args{dynamic_lib} = {
         OTHERLDFLAGS => ' -lgcc_s',
     },
