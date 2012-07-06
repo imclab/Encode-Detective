@@ -7,12 +7,14 @@ use strict;
 use warnings;
 
 use XSLoader;
-our $VERSION = 0.04;
+our $VERSION = 0.05;
 XSLoader::load 'Encode::Detective', $VERSION;
 
 1;
 
 __END__
+
+=encoding UTF-8
 
 =head1 NAME
 
@@ -47,7 +49,9 @@ the C<decode> method of L<Encode>:
         $text = decode ($encoding, $text);
     }
 
-=head1 DETECTED ENCODINGS
+=head1 DETECTED AND UNDETECTED ENCODINGS
+
+=head2 Detected encodings
 
 The following encodings are detected:
 
@@ -91,7 +95,9 @@ French/European encoding.
 
 =back
 
-Character sets not detected:
+=head2 Undetected encodings
+
+The following character sets are not detected:
 
 =over
 
@@ -102,7 +108,8 @@ A MacIntosh encoding incorporating some European letters.
 =item CP932
 
 An extension of Shift-JIS, more common in practice than actual
-Shift-JIS.
+Shift-JIS. This has code points for things like ① (circled one) which
+don't exist in Shift-JIS.
 
 =item TIS-620
 
