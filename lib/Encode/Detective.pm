@@ -97,6 +97,8 @@ Character sets not detected:
 
 =item mac roman
 
+A MacIntosh encoding incorporating some European letters.
+
 =item CP932
 
 An extension of Shift-JIS, more common in practice than actual
@@ -104,17 +106,29 @@ Shift-JIS.
 
 =item TIS-620
 
-Thai encoding.
+A Thai encoding.
 
 =back
-
-=head1 TODO
-
-The module needs more tests. Please send example files
 
 =head1 BUGS
 
 =over
+
+=item Lacks regression tests
+
+The module needs many, many more regression tests before any work can
+be done on altering the underlying algorithms. The existing library
+already has checks for some of the encodings which are not
+detected. These are currently switched off for some reason, maybe
+because it was not possible to unambiguously detect them. Without very
+solid regression tests, no patches can be applied to the detection
+code, since it will not be clear whether or not the existing encoding
+detection for every possible encoding is damaged by the
+patches. 
+
+Please send example files containing encodings. Either fork the
+repository and add files in the directory F<t/samples>, or send them
+to the module maintainer at <bkb@cpan.org>.
 
 =item TIS-620
 
@@ -128,10 +142,12 @@ The documentation of detected encodings above is not complete.
 
 =head1 HISTORY
 
-This module is based on a C++ library for character set detection from
-Firefox, which used to be available as a standalone library. Now the
-code cannot be used as a standalone library, so this has become a fork
-of the original Mozilla code.
+Encode::Detective is based on the C++ library for character set
+detection in the Firefox web browser. This library used to be
+available as a standalone library. Unfortunately, as of 2012, the
+Firefox code has been integrated into the browser code, and it cannot
+be used as a standalone library, so this has become a fork of the
+original Mozilla code.
 
 Encode::Detective is a fork of L<Encode::Detect>. It removes almost
 all of the interface of Encode::Detect except the single function
@@ -142,18 +158,21 @@ of the module on various systems.
 
 =head2 edetect
 
-The L<edetect> standalone script can guess the encodings of files.
+The L<edetect> standalone script installed with Encode::Detective can
+guess the encodings of files.
 
 =head2 Online demonstration
 
-L<LeMoDa.net offers an online detection service|http://www.lemoda.net/tools/encode-detective/>,
-which also checks the HTTP response header and the meta tag of the
-page.
+L<LeMoDa.net offers an online detection
+service|http://www.lemoda.net/tools/encode-detective/>, which also
+checks the HTTP response header and the meta tag (the tag containing
+C<charset=>) of the page.
 
 =head2 Encode::Guess
 
 L<Encode::Guess> is a Perl module which does something similar to
-Encode::Detective.
+Encode::Detective. It is slightly different in that it requires a list
+of candidate encodings.
 
 =head2 Encode::Detect
 
@@ -167,6 +186,12 @@ file.
 L<IO::HTML> uses byte order mark inspection and inspection of HTML to
 detect encodings of web pages (see
 L<http://en.wikipedia.org/wiki/Byte_order_mark>).
+
+=head2 C++ and Perl XS
+
+There is a short description of the method used in this module to
+combine C++ and Perl XS at
+L<http://www.lemoda.net/perl/xs-and-cplusplus/>.
 
 =head1 AUTHORS
 
