@@ -157,7 +157,16 @@ Encode::Detective.
 
 =head2 Encode::Detect
 
-L<Encode::Detect> is the original version of this module.
+L<Encode::Detect> is the original version of this module. Whereas this
+module offers the single interface, L</detect>, Encode::Detect has
+facilities to create an object, make multiple reads, and detect end of
+file.
+
+=head2 IO::HTML
+
+L<IO::HTML> uses byte order mark inspection and inspection of HTML to
+detect encodings of web pages (see
+L<http://en.wikipedia.org/wiki/Byte_order_mark>).
 
 =head1 AUTHORS
 
